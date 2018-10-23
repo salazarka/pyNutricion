@@ -12,9 +12,6 @@ export class Profile extends Component {
     return (
       <View>
         <Text style={styles.text} >Información</Text>
-        {/* <TouchableOpacity onPress={() => this.button()}>
-          <Text>Button</Text>
-        </TouchableOpacity> */}
       </View>
     )
   }
