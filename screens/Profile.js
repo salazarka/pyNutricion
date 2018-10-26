@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { Button, StyleSheet, Text, View, AppRegistry, Alert, TouchableOpacity, TouchableHighlight } from 'react-native';
 import Home from './Home';
+var state = true;
 
 export class Profile extends Component {
   render() {
-    Alert.alert(
-      'Aviso!',
-      'En las próximas 24 horas estará su plan nutricional.'      
-    );
+    console.log(state);
+    if(state == true){
+      Alert.alert(
+        'Aviso!',
+        'En las próximas 24 horas estará su plan nutricional.'  
+      );
+      state = false;
+    }
 
     return (
       <View>
