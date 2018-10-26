@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, ListView, Alert } from 'react-native';
 import * as firebase from'firebase';
-import {Collapse,CollapseHeader, CollapseBody, AccordionList} from 'accordion-collapse-react-native';
-import { Thumbnail, List, ListItem, Separator } from 'native-base';
+import {Collapse,CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
+import { ListItem, Separator } from 'native-base';
 
 const firebaseConfig = {
     apiKey: "AIzaSyB4An-mU9xJS1HFK3-wDKHgj_SeplK4c2w",
@@ -26,11 +26,16 @@ export class Home extends React.Component{
       itemDataSourceV: ds,
       itemDataSourceG: ds,
       itemDataSourceO: ds,
+      //
+      result: 0
     }
     this.itemsRef =  this.getRef().child('items'); 
-
     this.renderRow = this.renderRow.bind(this);
-    this.pressRow = this.pressRow.bind(this);    
+    this.pressRow = this.pressRow.bind(this);        
+  }
+
+  getResponse(result){
+    this.setState({result});
   }
 
   getRef(){
@@ -58,7 +63,9 @@ export class Home extends React.Component{
       let items = [];
       snap.forEach((child) => {
         if( (child.val().category == "Pregnancy") && (child.val().space < 21)){ // 
-          items.push( {title: child.val().name, _key: child.key} );
+          items.push( { title: child.val().name,
+                        desp: child.val().note, 
+                        _key: child.key} );
         }
       });
       this.setState( {itemDataSourceP: this.state.itemDataSourceP.cloneWithRows(items)} );
@@ -70,7 +77,9 @@ export class Home extends React.Component{
       let items = [];
       snap.forEach((child) => {
         if( (child.val().category == "Sport") && (child.val().space < 21)){ // 
-          items.push( {title: child.val().name, _key: child.key} );
+          items.push( { title: child.val().name,
+                        desp: child.val().note, 
+                        _key: child.key} );
         }
       });
       this.setState( {itemDataSourceS: this.state.itemDataSourceS.cloneWithRows(items)} );
@@ -82,7 +91,9 @@ export class Home extends React.Component{
       let items = [];
       snap.forEach((child) => {
         if( (child.val().category == "Gluten Free") && (child.val().space < 21)){ // { // 
-          items.push( {title: child.val().name, _key: child.key} );
+          items.push( { title: child.val().name,
+                        desp: child.val().note, 
+                        _key: child.key} );
         }
       });
       this.setState( {itemDataSourceG: this.state.itemDataSourceG.cloneWithRows(items)} );
@@ -94,7 +105,9 @@ export class Home extends React.Component{
       let items = [];
       snap.forEach((child) => {
         if( (child.val().category == "Vegan") && (child.val().space < 21)){ // 
-          items.push( {title: child.val().name, _key: child.key} );
+          items.push( { title: child.val().name,
+                        desp: child.val().note, 
+                        _key: child.key} );
         }
       });
       this.setState( {itemDataSourceV: this.state.itemDataSourceV.cloneWithRows(items)} );
@@ -106,7 +119,9 @@ export class Home extends React.Component{
       let items = [];
       snap.forEach((child) => {
         if( (child.val().category == "Others") && (child.val().space < 21)){ // 
-          items.push( {title: child.val().name, _key: child.key} );
+          items.push( { title: child.val().name,
+                        desp: child.val().note, 
+                        _key: child.key} );
         }
       });
       this.setState( {itemDataSourceO: this.state.itemDataSourceO.cloneWithRows(items)} );
@@ -117,11 +132,23 @@ export class Home extends React.Component{
     console.log(item)
   }
 
+  alertItemName = () => {
+    alert(item.name)
+ }
+
   renderRow(item){
     return (
       <View>
         <Text  style={styles.container}
-          onPress={() => this.props.navigation.navigate('ProfileScreen',)}>
+          //onPress={() => this.props.navigation.navigate('ProfileScreen',)}>
+          onPress={() =>  Alert.alert(
+            'Descripcion',
+            item.desp,
+            [
+              {text: 'Cancel' },
+              {text: 'Make a plan', onPress: () => this.props.navigation.navigate('ProfileScreen',)}
+            ],
+            { cancelable: false } )}>
           {item.title}
         </Text>
       </View>
@@ -131,6 +158,7 @@ export class Home extends React.Component{
   render() {
     return (
       <View >
+        <Text>{this.state.result}</Text>
         <Text style={styles.title}>Nutricionistas</Text>
         {/*<ListView 
           dataSource = {this.state.itemDataSource}
@@ -146,7 +174,7 @@ export class Home extends React.Component{
             <ListItem>
               <ListView 
                 dataSource = {this.state.itemDataSourceS}
-                renderRow={ this.renderRow } 
+                renderRow ={ this.renderRow } 
                 />
             </ListItem>
           </CollapseBody>
