@@ -1,18 +1,28 @@
 import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
-import Home from './screens/Home';
-import Profile from './screens/Profile';
+import Home from './Client/Home';
+import Profile from './Client/Profile';
+import Login from './DataUser/Login';
+import Register from './DataUser/Register';
+import ClientRegistration from './DataUser/ClientRegistration';
+import NutritionistRegistration from './DataUser/NutritionistRegistration';
 
 const AppNavigator = StackNavigator({
-  HomeScreen: { screen: Home },
-  ProfileScreen: { screen: Profile }
-}); 
+    LoginScreen: { screen: Login },
+    RegisterScreen: { screen: Register },
+    ClientRegistScreen: { screen: ClientRegistration },
+    NutriRegistScreen: { screen: NutritionistRegistration },
+    HomeScreen: { screen: Home },
+    ProfileScreen: { screen: Profile }
+
+});
 
 export default class App extends React.Component {
-  render() {
-    return (
-      <AppNavigator />
-    );
-  }
-}
+    render() {
+        return ( <
+            AppNavigator / >
 
+
+        );
+    }
+}

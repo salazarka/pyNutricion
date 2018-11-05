@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "accordion-collapse-react-native": "^0.1.6",
+    "axios": "^0.18.0",
     "expo": "^30.0.1",
     "firebase": "^5.5.5",
     "native-base": "^2.8.1",
@@ -19,6 +20,9 @@
     "react-native-expandable-section-list": "^1.0.7",
     "react-native-material-dropdown": "^0.11.1",
     "react-native-popup": "^0.6.1",
-    "react-navigation": "^2.18.0"
+    "react-navigation": "^2.18.0",
+    "react-redux": "5.0.7",
+    "redux": "3.7.2",
+    "redux-promise": "0.5.3"
   }
 }
