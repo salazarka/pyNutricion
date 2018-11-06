@@ -18,7 +18,7 @@ export class ClientRegistration extends Component {
         }
     //}
 
-    onChangeInput = (email) => {
+    onChangeEmail = (email) => {
         this.setState({ email });
     }
     onChangePass = (password) => {
@@ -42,6 +42,9 @@ export class ClientRegistration extends Component {
 
     addPost = () =>{
         // this.props.addPost(this.state)
+        Alert.alert(
+            'Successful registration'
+         )
          console.log(this.state)
          const URL ='https://proyecto-92f5c.firebaseio.com/client.json'
  
@@ -50,6 +53,7 @@ export class ClientRegistration extends Component {
              url:URL,
              data:this.state
          }).then(respons =>console.log(Response.data))
+         
      }
 
 
