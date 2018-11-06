@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import NutritionistRegistration from './DataUser/NutritionistRegistration';
 
+import axios from 'axios';
+const URL = `https://jsonplaceholder.typicode.com`;
+const FIREBASEDB = `https://proyecto-92f5c.firebaseio.com`;
+
 const firebaseConfig = {
     apiKey: "AIzaSyB4An-mU9xJS1HFK3-wDKHgj_SeplK4c2w",
     authDomain: "proyecto-92f5c.firebaseapp.com",
@@ -11,6 +15,30 @@ const firebaseConfig = {
 }
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+export function getArticles(){
+    const request = axios.get(`${URL}/posts`)
+                .then(response => response.data);
+
+    return {
+        type:'GET_ARTICLES',
+        payload:request
+    }
+}
+
+
+export function addPost(post){
+    const request = axios({
+        method:"POST",
+        url:`${FIREBASEDB}/client.json`,
+        data:post
+    }).then( response => response.data)
+
+    return {
+        type:'ADD_POST',
+        payload:request
+    }
+}
 
 class Actions extends Component {
     addNutritionist = () => {

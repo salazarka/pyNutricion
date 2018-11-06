@@ -1,42 +1,57 @@
 import React, { Component } from 'react';
 import { Button, StyleSheet, Text, TextInput, ScrollView, View, Alert } from 'react-native';
+import axios from 'axios';
+import { addPost } from '../Store/actions/';
+console.disableYellowBox = true;
 
 export class ClientRegistration extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            email: "",
-            password: "",
-            userType: "",
-            description: "",
-            age: "",
-            height: "",
-            weight: ""
+    //constructor(props) {
+        //super(props);
+        state = {
+            email: '',
+            password: '',
+            userType: '',
+            description: '',
+            age: '',
+            height: '',
+            weight: ''
         }
+    //}
+
+    onChangeInput = (email) => {
+        this.setState({ email });
+    }
+    onChangePass = (password) => {
+        this.setState({ password });
+    }
+    onChangeUserType = (userType) => {
+        this.setState({ userType});
+    }
+    onChangeDesc = (description) => {
+        this.setState({ description });
+    }
+    onChangeAge = (age) => {
+        this.setState({ age });
+    }
+    onChangeHeig = (height) => {
+        this.setState({ height });
+    }
+    onChangeWeig = (weight) => {
+        this.setState({ weight });
     }
 
+    addPost = () =>{
+        // this.props.addPost(this.state)
+         console.log(this.state)
+         const URL ='https://proyecto-92f5c.firebaseio.com/client.json'
+ 
+         axios({
+             method:"POST",
+             url:URL,
+             data:this.state
+         }).then(respons =>console.log(Response.data))
+     }
 
-    onChangeInput = (result) => {
-        this.setState({ email: result });
-    }
-    onChangePass = (result) => {
-        this.setState({ password: result });
-    }
-    onChangeUserType = (result) => {
-        this.setState({ userType: result });
-    }
-    onChangeDesc = (result) => {
-        this.setState({ description: result });
-    }
-    onChangeAge = (result) => {
-        this.setState({ age: result });
-    }
-    onChangeHeig = (result) => {
-        this.setState({ height: result });
-    }
-    onChangeWeig = (result) => {
-        this.setState({ weight: result });
-    }
 
     render() {
         return ( <
@@ -46,83 +61,67 @@ export class ClientRegistration extends Component {
             <
             View >
 
-            <
-            Text style = { styles.title } > REGISTRATION < /Text>  
+            <Text style = { styles.title } > REGISTRATION </Text>  
 
-            <
-            Text style = { styles.property } > Email: < /Text>     
+            <Text style = { styles.property } > Email: </Text>     
 
-            <
-            TextInput value = { this.state.email }
+            <TextInput value = { this.state.email }
             style = { styles.input }
-            onChangeText = { this.onChangeInput }
+            onChangeText = { this.onChangeEmail }
             /> 
 
-            <
-            Text style = { styles.property } > Password: < /Text>     
+            <Text style = { styles.property } > Password: </Text>     
 
-            <
-            TextInput value = { this.state.password }
+            <TextInput value = { this.state.password }
             style = { styles.input }
             onChangeText = { this.onChangePass }
             /> 
 
-            <
-            Text style = { styles.property } > UserType: < /Text>     
+            <Text style = { styles.property } > UserType: </Text>     
 
-            <
-            TextInput value = { this.state.userType }
+            <TextInput value = { this.state.userType }
             style = { styles.input }
             onChangeText = { this.onChangeUserType }
             /> 
 
-            <
-            Text style = { styles.property } > Description: < /Text>     
+            <Text style = { styles.property } > Description: </Text>     
 
-            <
-            TextInput value = { this.state.description }
+            <TextInput value = { this.state.description }
             style = { styles.input }
             onChangeText = { this.onChangeDesc }
             /> 
 
-            <
-            Text style = { styles.property } > Age: < /Text>     
+            <Text style = { styles.property } > Age: </Text>     
 
-            <
-            TextInput value = { this.state.age }
+            <TextInput value = { this.state.age }
             style = { styles.input }
             onChangeText = { this.onChangeAge }
             /> 
 
-            <
-            Text style = { styles.property } > Height: < /Text>     
+            <Text style = { styles.property } > Height: </Text>     
 
-            <
-            TextInput value = { this.state.height }
+            <TextInput value = { this.state.height }
             style = { styles.input }
             onChangeText = { this.onChangeHeig }
             /> 
 
-            <
-            Text style = { styles.property } > Weight: < /Text>     
+            <Text style = { styles.property } > Weight: </Text>     
 
-            <
-            TextInput value = { this.state.weight }
+            <TextInput value = { this.state.weight }
             style = { styles.input }
             onChangeText = { this.onChangeWeig }
             /> 
 
             <
             Button title = "REGISTER"
-            color = "#659e6e" /
+            color = "#659e6e"
+            onPress={this.addPost} /
             >
 
 
-            <
-            /View >
+            </View >
 
-            <
-            /ScrollView> 
+            </ScrollView> 
         )
     }
 }
