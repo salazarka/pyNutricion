@@ -40,7 +40,7 @@ export class ClientRegistration extends Component {
         this.setState({ weight });
     }
 
-    addPost = () =>{
+    addPostC = () =>{
         // this.props.addPost(this.state)
         Alert.alert(
             'Successful registration'
@@ -119,7 +119,7 @@ export class ClientRegistration extends Component {
             <
             Button title = "REGISTER"
             color = "#659e6e"
-            onPress={this.addPost} /
+            onPress={this.addPostC} /
             >
 
 

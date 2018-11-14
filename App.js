@@ -6,23 +6,23 @@ import Login from './DataUser/Login';
 import Register from './DataUser/Register';
 import ClientRegistration from './DataUser/ClientRegistration';
 import NutritionistRegistration from './DataUser/NutritionistRegistration';
+import Multimedia from './Client/Multimedia';
 
 const AppNavigator = StackNavigator({
-    LoginScreen: { screen: Login },
-    RegisterScreen: { screen: Register },
-    ClientRegistScreen: { screen: ClientRegistration },
-    NutriRegistScreen: { screen: NutritionistRegistration },
-    HomeScreen: { screen: Home },
-    ProfileScreen: { screen: Profile }
-
+    //LoginScreen: { screen: Login },
+    //HomeScreen: { screen: Home },
+    //RegisterScreen: { screen: Register },
+    //ClientRegistScreen: { screen: ClientRegistration },
+    //NutriRegistScreen: { screen: NutritionistRegistration },
+    
+    //ProfileScreen: { screen: Profile },
+    MultimediaScreen: { screen: Multimedia},
 });
 
 export default class App extends React.Component {
     render() {
-        return ( <
-            AppNavigator / >
-
-
+        return ( 
+            <AppNavigator/>
         );
     }
 }

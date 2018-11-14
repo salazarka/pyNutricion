@@ -2,7 +2,7 @@ import axios from 'axios';
 const URL = `https://jsonplaceholder.typicode.com`;
 const FIREBASEDB = `https://proyecto-92f5c.firebaseio.com`;
 
-export function getArticles() {
+/* export function getArticles() {
     const request = axios.get(`${URL}/posts`)
         .then(response => response.data);
     return {
@@ -11,9 +11,9 @@ export function getArticles() {
         payload: request
 
     }
-}
+} */
 
-export function addPost(post){
+export function addPostC(post){
     const request = axios({
         method:"POST",
         url:`${FIREBASEDB}/client.json`,
@@ -25,3 +25,17 @@ export function addPost(post){
         payload:request
     }
 }
+
+export function addPostN(post){
+    const request = axios({
+        method:"POST",
+        url:`${FIREBASEDB}/nutricionist.json`,
+        data:post
+    }).then( response => response.data)
+
+    return {
+        type:'ADD_POST',
+        payload:request
+    }
+}
+

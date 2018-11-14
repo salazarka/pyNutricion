@@ -1,101 +1,103 @@
 import React, { Component } from 'react';
 import { Button, StyleSheet, Text, TextInput, ScrollView, View, TouchableWithoutFeedback, Alert } from 'react-native';
-
+import axios from 'axios';
 
 export class NutritionistRegistration extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            email: "",
-            password: "",
-            userType: "",
-            description: "",
-            counter: "",
+    //constructor(props) {
+        //super(props);
+        state = {
+            email: '',
+            password: '',
+            userType: '',
+            description: '',
+            counter: '',
         }
+    //}
+
+    onChangeEmail = (email) => {
+        this.setState({ email });
+    }
+    onChangePass = (password) => {
+        this.setState({ password });
+    }
+    onChangeUserType = (userType) => {
+        this.setState({ userType });
+    }
+    onChangeDesc = (description) => {
+        this.setState({ description });
+    }
+    onChangeCount = (counter) => {
+        this.setState({ counter });
     }
 
-    onChangeInput = (result) => {
-        this.setState({ email: result });
-    }
-    onChangePass = (result) => {
-        this.setState({ password: result });
-    }
-    onChangeUserType = (result) => {
-        this.setState({ userType: result });
-    }
-    onChangeDesc = (result) => {
-        this.setState({ description: result });
-    }
-    onChangeCount = (result) => {
-        this.setState({ counter: result });
-    }
+    addPostN = () =>{
+        // this.props.addPost(this.state)
+        Alert.alert(
+            'Successful registration'
+         )
+         console.log(this.state)
+         const URL ='https://proyecto-92f5c.firebaseio.com/nutricionist.json'
+ 
+         axios({
+             method:"POST",
+             url:URL,
+             data:this.state
+         }).then(respons =>console.log(Response.data))
+         
+     }
 
     render() {
-        return ( <
-            ScrollView style = {
+        return ( 
+        <ScrollView style = {
                 { width: '100%' }
-            } >
-            <
-            View >
+            }>
+            <View >
 
-            <
-            Text style = { styles.title } > REGISTRATION < /Text>  
+            <Text style = { styles.title } > REGISTRATION </Text>  
 
-            <
-            Text style = { styles.property } > Email: < /Text>     
+            <Text style = { styles.property } > Email: </Text>     
 
-            <
-            TextInput value = { this.state.email }
+            <TextInput value = { this.state.email }
             style = { styles.input }
-            onChangeText = { this.onChangeInput }
+            onChangeText = { this.onChangeEmail }
             /> 
 
-            <
-            Text style = { styles.property } > Password: < /Text>     
+            <Text style = { styles.property } > Password: </Text>     
 
-            <
-            TextInput value = { this.state.password }
+            <TextInput value = { this.state.password }
             style = { styles.input }
             onChangeText = { this.onChangePass }
             /> 
 
-            <
-            Text style = { styles.property } > UserType: < /Text>     
+            <Text style = { styles.property } > UserType: </Text>     
 
-            <
-            TextInput value = { this.state.userType }
+            <TextInput value = { this.state.userType }
             style = { styles.input }
             onChangeText = { this.onChangeUserType }
             /> 
 
-            <
-            Text style = { styles.property } > Description: < /Text>     
+            <Text style = { styles.property } > Description: </Text>     
 
-            <
-            TextInput value = { this.state.description }
+            <TextInput value = { this.state.description }
             style = { styles.input }
             onChangeText = { this.onChangeDesc }
             /> 
 
-            <
-            Text style = { styles.property } > Quantity Available: < /Text>     
+            <Text style = { styles.property } > Quantity Available: </Text>     
 
-            <
-            TextInput value = { this.state.counter }
+            <TextInput value = { this.state.counter }
             style = { styles.input }
             onChangeText = { this.onChangeCount }
             /> 
 
 
-            <
-            Button title = "REGISTER"
-            color = "#659e6e" /
-            >
-            <
-            /View> 
+            <Button title = "REGISTER"
+            color = "#659e6e" 
+            onPress={this.addPostN} />
+            
+            </View> 
 
-            <
-            /ScrollView> 
+            </ScrollView> 
         )
     }
 }
