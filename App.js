@@ -10,12 +10,11 @@ import Multimedia from './Client/Multimedia';
 
 const AppNavigator = StackNavigator({
     //LoginScreen: { screen: Login },
-    //HomeScreen: { screen: Home },
-    //RegisterScreen: { screen: Register },
-    //ClientRegistScreen: { screen: ClientRegistration },
-    //NutriRegistScreen: { screen: NutritionistRegistration },
-    
-    //ProfileScreen: { screen: Profile },
+    HomeScreen: { screen: Home },
+    RegisterScreen: { screen: Register },
+    ClientRegistScreen: { screen: ClientRegistration },
+    NutriRegistScreen: { screen: NutritionistRegistration },
+    ProfileScreen: { screen: Profile },
     MultimediaScreen: { screen: Multimedia},
 });
 

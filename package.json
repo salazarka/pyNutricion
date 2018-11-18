@@ -9,6 +9,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo/vector-icons": "^8.0.0",
     "accordion-collapse-react-native": "^0.1.6",
     "axios": "^0.18.0",
     "expo": "^30.0.1",
@@ -27,6 +28,7 @@
     "react-native-material-dropdown": "^0.11.1",
     "react-native-popup": "^0.6.1",
     "react-native-slideshow": "^1.0.1",
+    "react-native-video": "^3.2.1",
     "react-navigation": "^2.18.0",
     "react-redux": "5.0.7",
     "react-slideshow-image": "^1.0.8",
