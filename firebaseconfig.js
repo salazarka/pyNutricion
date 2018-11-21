@@ -6,9 +6,8 @@ const config = {
     databaseURL: "https://proyecto-92f5c.firebaseio.com",
     storageBucket: "proyecto-92f5c.appspot.com"
 }
-  
-  firebase.initializeApp(config);
 
-  var firebaseDbh = firebase.database();
-  
-  module.exports = firebaseDbh;
+
+const firebaseApp = firebase.initializeApp(config);
+
+module.exports = firebaseApp;

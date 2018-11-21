@@ -7,22 +7,26 @@ import Register from './DataUser/Register';
 import ClientRegistration from './DataUser/ClientRegistration';
 import NutritionistRegistration from './DataUser/NutritionistRegistration';
 import Multimedia from './Client/Multimedia';
+import HomeNut from './Nutritionist/HomeNut';
 
 const AppNavigator = StackNavigator({
-    //LoginScreen: { screen: Login },
-    //HomeScreen: { screen: Home },
-    //RegisterScreen: { screen: Register },
-    //ClientRegistScreen: { screen: ClientRegistration },
-    //NutriRegistScreen: { screen: NutritionistRegistration },
-    
-    //ProfileScreen: { screen: Profile },
-    MultimediaScreen: { screen: Multimedia},
+    LoginScreen: { screen: Login },
+    RegisterScreen: { screen: Register },
+    ClientRegistScreen: { screen: ClientRegistration },
+    NutriRegistScreen: { screen: NutritionistRegistration },
+    HomeScreen: { screen: Home },
+    ProfileScreen: { screen: Profile },
+    MultimediaScreen: { screen: Multimedia },
+    HomeNutScreen: { screen: HomeNut },
 });
 
 export default class App extends React.Component {
     render() {
-        return ( 
-            <AppNavigator/>
+        return (
+
+            <
+            AppNavigator / >
+
         );
     }
 }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Button, Alert, ImageBackground, ScrollView } from 'react-native';
 import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
-
+import axios from 'axios';
+import { ListItem, Separator } from 'native-base';
 class Login extends Component {
 
     constructor(props) {
@@ -10,6 +11,7 @@ class Login extends Component {
                 email: "", //THIS IS A DEFAULT TEXT IN THE INPUT SPACE
                 password: ""
             }
+
         }
         //UPDATES THE USERNAME INPUT
     onChangeInput = (result) => {
@@ -22,7 +24,19 @@ class Login extends Component {
 
 
     render() {
-        return ( < View >
+        return (
+
+            <
+            ImageBackground source = { require('../assets/nutbg.jpg') }
+            style = { styles.container } >
+
+            <
+            ScrollView style = {
+                { width: '100%' }
+            } >
+
+            <
+            View >
 
             <
             Text style = { styles.title } > NUTRITION CONTROL APP < /Text> 
@@ -48,24 +62,51 @@ class Login extends Component {
             onChangeText = { this.onChangePass }
             />  
 
+
+            <
+            Separator style = { styles.expandible }
+            bordered >
+
+            <
+            /Separator >
+
+
             <
             Button title = "ENTER"
-            color = "#659e6e"
+            color = "#728e75"
             onPress = {
-                () => alert('Ready')
+                () =>
+
+                this.props.navigation.navigate('HomeNut', { currentUser: this.state.email })
             }
             />
 
+
+            <
+            Separator style = { styles.expandible }
+            bordered >
+
+            <
+            /Separator >
+
+
             <
             Button title = "REGISTER"
-            color = "#92d1b9"
+            color = "#aa6d71"
             onPress = {
                 () => this.props.navigation.navigate('RegisterScreen', )
             }
             />
 
             <
-            /View >
+            /View>
+
+            <
+            /ScrollView> 
+
+            <
+            /ImageBackground>
+
         );
 
     }
@@ -78,9 +119,10 @@ const styles = StyleSheet.create({
     },
     title: {
         marginTop: 30,
-        color: '#26754f',
+        color: 'white',
         fontSize: 25,
         textAlign: 'center',
+
     },
     property: {
         color: '#252f60',
@@ -88,10 +130,17 @@ const styles = StyleSheet.create({
     },
     input: {
         width: '100%',
-        backgroundColor: 'lightgrey',
+        backgroundColor: 'transparent',
         marginTop: 20,
         fontSize: 20,
         padding: 5
+    },
+    expandible: {
+        backgroundColor: 'transparent',
+        marginTop: 3,
+    },
+    container: {
+        flex: 1,
     }
 });
 
