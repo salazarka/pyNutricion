@@ -61,6 +61,24 @@ export class NutritionistRegistration extends Component {
         });
     }
 
+<<<<<<< HEAD
+=======
+    addPostN = () =>{
+        // this.props.addPost(this.state)
+        Alert.alert(
+            'Successful registratio'
+         )
+         console.log(this.state)
+         const URL ='https://proyecto-92f5c.firebaseio.com/items.json'
+ 
+         axios({
+             method:"POST",
+             url:URL,
+             data:this.state
+         }).then(respons =>console.log(Response.data))
+         
+     }
+>>>>>>> 679b5fd44388b8651269dacc35b7e321b23fd2c0
 
     render() {
         return ( <

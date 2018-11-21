@@ -8,6 +8,7 @@ import ClientRegistration from './DataUser/ClientRegistration';
 import NutritionistRegistration from './DataUser/NutritionistRegistration';
 import Multimedia from './Client/Multimedia';
 import HomeNut from './Nutritionist/HomeNut';
+import Borrar from './DataUser/VerficarEmail';
 
 const AppNavigator = StackNavigator({
     LoginScreen: { screen: Login },
