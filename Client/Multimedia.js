@@ -9,7 +9,6 @@ const deviceHeight = (Dimensions.get('window').height);
 const styles = StyleSheet.create({
     container: {
       flex: 0.5,
-     
     },
     icon: {
         width: 300,
@@ -87,7 +86,44 @@ export default class Multimedia extends React.Component{
                 <View>
                     <Text style={styles.textTitle}>Name</Text>
                     <Video
-                        source={{ uri:'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
+                        source={{ uri:'https://firebasestorage.googleapis.com/v0/b/proyecto-92f5c.appspot.com/o/%C2%A1Lleva%20una%20alimentaci%C3%B3n%20saludable!%20El%20Chef%20Manuel%20Tuz%20de%20la%20Escuela%20de%20Gastro....mp4?alt=media&token=5bd4fdeb-9ca5-4d19-9f9d-d7a95400132b' }}
+                            shouldPlay={this.state.shouldPlay}
+                        resizeMode="cover"
+                        style={{ 
+                            width: 350,
+                            height: 300, 
+                            marginLeft: 10,
+                        }}
+                        isMuted={this.state.mute}
+                    />
+                    <View style={styles.controlBar}>
+                        <MaterialIcons
+                            name={this.state.mute ? "volume-mute" : "volume-up"}
+                            size={45}
+                            color="white"
+                            onPress={this.handleVolume}
+                        />
+                        <MaterialIcons
+                            name={this.state.shouldPlay ? "pause" : 
+                                "play-arrow"}
+                            size={45}
+                            color="white"
+                            onPress={this.handlePlayAndPause}
+                        />
+                    </View>
+                </View>
+                <Text style={styles.text}>
+                    Calories:
+                </Text>
+                <Text style={styles.text}>
+                    Ingredients:
+                </Text>
+            </View>
+            <View style={styles.container}>
+                <View>
+                    <Text style={styles.textTitle}>Name</Text>
+                    <Video
+                        source={{ uri:'https://firebasestorage.googleapis.com/v0/b/proyecto-92f5c.appspot.com/o/Keto-Friendly%20Lasagne%20Dinner.mp4?alt=media&token=b54a2776-202d-463b-8c44-5756c71e7a60s' }}
                             shouldPlay={this.state.shouldPlay}
                         resizeMode="cover"
                         style={{ 
@@ -120,6 +156,7 @@ export default class Multimedia extends React.Component{
                     Ingredients:
                 </Text>
             </View>
+            
             <View style={styles.contentContainer}>
                 <Text style={styles.textTitle}>Name</Text>
                   <Image 

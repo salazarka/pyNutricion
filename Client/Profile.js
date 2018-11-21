@@ -2,14 +2,20 @@ import React, { Component } from 'react';
 import { Button, StyleSheet, Text, View, Alert, Image, TouchableHighlight } from 'react-native';
 import PropTypes from 'prop-types';
 
+
+
 var state = true;
 
 const styles = StyleSheet.create({
+  container: {
+    paddingTop: 10,
+    paddingLeft: 15,
+  },
   text: {
-    marginTop: 30,
     color: '#4f603c',
-    fontSize: 30,
-    textAlign: 'center',
+    fontSize: 15,
+    marginTop: 5,
+    alignSelf: 'flex-start',
   },
   textButton: {
     color: '#4f603c',
@@ -28,7 +34,13 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     marginRight:10
-  }
+  },
+  textTitle: {
+      color: '#4f603c',
+      fontSize: 30,
+      textAlign: 'center',
+      marginTop: 15,
+  },
 });
 
 export class Profile extends Component {
@@ -38,12 +50,20 @@ export class Profile extends Component {
     return {
       title: 'Information',
       headerRight: (
-        <TouchableHighlight onPress={() => navigation.navigate('MultimediaScreen')}>
+      <TouchableHighlight onPress={() => navigation.navigate('MultimediaScreen')}>
+          <Image 
+            style={styles.icon}style={{ width: 40, height: 40}}
+            source = {require('../Image/book.png')}
+            
+          />
+      </TouchableHighlight>),
+      headerLeft: (
+      <TouchableHighlight onPress={() => navigation.navigate('MultimediaScreen')}>
       <Image 
-        style={styles.icon}
-        source = {require('../Image/book.png')}
+        style={styles.icon}style={{ width: 40, height: 40, marginLeft:260}}
+        source = {require('../Image/addNote.png')}
       />
-      </TouchableHighlight>     
+  </TouchableHighlight>
       )
     };
   };
@@ -59,7 +79,6 @@ export class Profile extends Component {
   render() {
     const { navigation } = this.props;
     const itemId = navigation.getParam('itemId', 'NO-ID');
-    console.log(state);
     if(state == false){
       Alert.alert(
         'Aviso!',
@@ -70,7 +89,10 @@ export class Profile extends Component {
 
     return (
       <View>
-        <Text>Your plan is created by {JSON.stringify(itemId)}</Text>
+        <Text style={styles.textTitle}>Board</Text>
+        <View style={styles.container}>
+            <Text>{JSON.stringify(itemId.boardinfo)}</Text>
+          </View>
       </View>
     )
   }

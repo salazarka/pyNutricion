@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const firebaseConfig = {
+/* const firebaseConfig = {
   apiKey: "AIzaSyB4An-mU9xJS1HFK3-wDKHgj_SeplK4c2w",
   authDomain: "proyecto-92f5c.firebaseapp.com",
   databaseURL: "https://proyecto-92f5c.firebaseio.com",
@@ -55,7 +55,10 @@ const firebaseConfig = {
   messagingSenderId: "266657736727"
   }
   
-const firebaseApp =  firebase.initializeApp(firebaseConfig); 
+const firebaseApp =  firebase.initializeApp(firebaseConfig);    */
+
+const firebaseApp = require('../firebaseconfig.js');
+//console.log(firebaseApp);
 
 export class Home extends React.Component{
   static navigationOptions = {

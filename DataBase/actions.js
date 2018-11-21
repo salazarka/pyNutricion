@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+/* import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import NutritionistRegistration from './DataUser/NutritionistRegistration';
 
@@ -54,7 +54,7 @@ class Actions extends Component {
             /View>
         );
     }
-}
+} */
 
 
 /*

@@ -33,10 +33,10 @@ export class NutritionistRegistration extends Component {
     addPostN = () =>{
         // this.props.addPost(this.state)
         Alert.alert(
-            'Successful registration'
+            'Successful registratio'
          )
          console.log(this.state)
-         const URL ='https://proyecto-92f5c.firebaseio.com/nutricionist.json'
+         const URL ='https://proyecto-92f5c.firebaseio.com/items.json'
  
          axios({
              method:"POST",
