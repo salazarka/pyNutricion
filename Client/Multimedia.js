@@ -36,8 +36,7 @@ const styles = StyleSheet.create({
         bottom: 0,
         left: 0,
         right: 0,
-        width: 300,
-        marginLeft: 30,
+        width: 375,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
@@ -71,7 +70,7 @@ export default class Multimedia extends React.Component{
             <View style={styles.container}>
             <Carousel
             width={375}
-            height={deviceHeight-80}
+            height={deviceHeight}
             showIndicators={true}   
             animate={false}
             pageInfo={true}
@@ -88,12 +87,11 @@ export default class Multimedia extends React.Component{
                     <Video
                         source={{ uri:'https://firebasestorage.googleapis.com/v0/b/proyecto-92f5c.appspot.com/o/%C2%A1Lleva%20una%20alimentaci%C3%B3n%20saludable!%20El%20Chef%20Manuel%20Tuz%20de%20la%20Escuela%20de%20Gastro....mp4?alt=media&token=5bd4fdeb-9ca5-4d19-9f9d-d7a95400132b' }}
                             shouldPlay={this.state.shouldPlay}
-                        resizeMode="cover"
-                        style={{ 
-                            width: 350,
-                            height: 300, 
-                            marginLeft: 10,
-                        }}
+                            resizeMode="contain"
+                            style={{ 
+                                width: 375,
+                                height: 300, 
+                            }}
                         isMuted={this.state.mute}
                     />
                     <View style={styles.controlBar}>
@@ -124,13 +122,12 @@ export default class Multimedia extends React.Component{
                     <Text style={styles.textTitle}>Name</Text>
                     <Video
                         source={{ uri:'https://firebasestorage.googleapis.com/v0/b/proyecto-92f5c.appspot.com/o/Keto-Friendly%20Lasagne%20Dinner.mp4?alt=media&token=b54a2776-202d-463b-8c44-5756c71e7a60s' }}
-                            shouldPlay={this.state.shouldPlay}
-                        resizeMode="cover"
-                        style={{ 
-                            width: 300,
-                            height: 300, 
-                            marginLeft: 30,
-                        }}
+                        shouldPlay={this.state.shouldPlay}
+                        resizeMode="contain"
+                            style={{ 
+                                width: 375,
+                                height: 300, 
+                            }}
                         isMuted={this.state.mute}
                     />
                     <View style={styles.controlBar}>

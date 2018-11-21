@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   
 const firebaseApp =  firebase.initializeApp(firebaseConfig);    */
 
-const firebaseApp = require('../firebaseconfig.js');
+const firebaseApp = require('../firebaseconfig');
 //console.log(firebaseApp);
 
 export class Home extends React.Component{

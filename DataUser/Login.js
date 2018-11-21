@@ -21,35 +21,38 @@ class Login extends Component {
         itemsRef.on('value',(snap) => {
             let items = [];
             snap.forEach((child) => {
-                if(child.val().email == this.state.email){
-                    stateAlert = true;
-                    this.props.navigation.navigate('MultimediaScreen', { itemId: child.val() } )
+                if( (child.val().email == this.state.email) && (child.val().password == this.state.password) ){
+                    stateAlert = false;
+                    this.props.navigation.navigate('MultimediaScreen', { itemId: child.val() } ) // SE TIENE QUE REDIRIGIR A LA PANTALLA DE NUTRICIONISTA
                 }
                 else{
                     itemsRefCli =  this.getRef().child('client'); 
                     itemsRefCli.on('value',(snap) => {
                         let items = [];
                         snap.forEach((child) => {
-                            if(child.val().email == this.state.email){
+                            if( (child.val().email == this.state.email) && (child.val().password == this.state.password) ){
+                                stateAlert = false;
                                 this.props.navigation.navigate('ProfileScreen', { itemId: child.val() } )
+                            }
+                            else if(stateAlert == true){
+                                Alert.alert(
+                                    'Do you want an account?',
+                                    '',
+                                    [
+                                      {text: 'No', onPress: () => this.props.navigation.navigate('LoginScreen')},
+                                      {text: 'Yes',  onPress: () => this.props.navigation.navigate('RegisterScreen')}
+                                    ],
+                                    { cancelable: false }
+                                  )
+                                stateAlert = false;
                             }
                         });
                     });
                 }
             });
+            stateAlert = true;
         });
-        /* if(stateAlert == true){
-            Alert.alert(
-                'Do you want an account?',
-                '',
-                [
-                  {text: 'No'},
-                  {text: 'Yes',  onPress: () => this.props.navigation.navigate('RegisterScreen')}
-                ],
-                { cancelable: false }
-              )
-            stateAlert = false;
-        } */
+        
     }
     
     getRef(){

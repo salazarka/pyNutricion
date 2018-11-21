@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, StyleSheet, Text, TextInput, ScrollView, View, Alert } from 'react-native';
 import axios from 'axios';
-import { addPost } from '../Store/actions/';
+import { addPost } from '../Store/actions';
 console.disableYellowBox = true;
 
 export class ClientRegistration extends Component {
