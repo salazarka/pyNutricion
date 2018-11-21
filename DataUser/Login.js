@@ -1,54 +1,39 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 import { StyleSheet, View, Text, TextInput, Button, Alert, ImageBackground, ScrollView } from 'react-native';
 import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
 import axios from 'axios';
 import { ListItem, Separator } from 'native-base';
-class Login extends Component {
-=======
-import { StyleSheet, View, Text, TextInput, Button, Alert } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-
 const firebaseApp = require('../firebaseconfig.js');
 var stateAlert = true;
->>>>>>> 679b5fd44388b8651269dacc35b7e321b23fd2c0
 
 class Login extends Component {
-    _renderSection = (section, sectionId)  => <Text>{section}</Text>;
-  
-    constructor(props) {
-<<<<<<< HEAD
-            super(props);
-            this.state = {
-                email: "", //THIS IS A DEFAULT TEXT IN THE INPUT SPACE
-                password: ""
-            }
+    _renderSection = (section, sectionId) => < Text > { section } < /Text>;
 
-        }
-=======
+
+    constructor(props) {
         super(props);
         this.state = {
             email: "", //THIS IS A DEFAULT TEXT IN THE INPUT SPACE
             password: ""
-        }       
+        }
     }
 
-    searchInDB () {
-        itemsRef =  this.getRef().child('items'); 
-        itemsRef.on('value',(snap) => {
+    searchInDB() {
+        itemsRef = this.getRef().child('items');
+        itemsRef.on('value', (snap) => {
             let items = [];
             snap.forEach((child) => {
-                if(child.val().email == this.state.email){
+                if (child.val().email == this.state.email) {
                     stateAlert = true;
-                    this.props.navigation.navigate('MultimediaScreen', { itemId: child.val() } )
-                }
-                else{
-                    itemsRefCli =  this.getRef().child('client'); 
-                    itemsRefCli.on('value',(snap) => {
+                    this.props.navigation.navigate('MultimediaScreen', { itemId: child.val() })
+                } else {
+                    itemsRefCli = this.getRef().child('client');
+                    itemsRefCli.on('value', (snap) => {
                         let items = [];
                         snap.forEach((child) => {
-                            if(child.val().email == this.state.email){
-                                this.props.navigation.navigate('ProfileScreen', { itemId: child.val() } )
+                            if (child.val().email == this.state.email) {
+                                this.props.navigation.navigate('ProfileScreen', { itemId: child.val() })
                             }
                         });
                     });
@@ -68,16 +53,15 @@ class Login extends Component {
             stateAlert = false;
         } */
     }
-    
-    getRef(){
+
+    getRef() {
         return firebaseApp.database().ref();
     }
 
->>>>>>> 679b5fd44388b8651269dacc35b7e321b23fd2c0
-        //UPDATES THE USERNAME INPUT
+    //UPDATES THE USERNAME INPUT
     onChangeInput = (result) => {
-        this.setState({ email: result });
-    }
+            this.setState({ email: result });
+        }
         //UPDATES THE PASSWORD INPUT
     onChangePass = (result) => {
         this.setState({ password: result });
@@ -85,7 +69,6 @@ class Login extends Component {
 
 
     render() {
-<<<<<<< HEAD
         return (
 
             <
@@ -99,29 +82,31 @@ class Login extends Component {
 
             <
             View >
-=======
-        return ( <View>
->>>>>>> 679b5fd44388b8651269dacc35b7e321b23fd2c0
 
-            <Text style = { styles.title } > NUTRITION CONTROL APP </Text> 
+            <
+            Text style = { styles.title } > NUTRITION CONTROL APP < /Text> 
 
-            <Text style = { styles.title } > LOGIN </Text>  
+            <
+            Text style = { styles.title } > LOGIN < /Text>  
 
-            <Text style = { styles.property } > Email: </Text>     
+            <
+            Text style = { styles.property } > Email: < /Text>     
 
-            <TextInput value = { this.state.email }
+            <
+            TextInput value = { this.state.email }
             style = { styles.input }
             onChangeText = { this.onChangeInput }
             />  
 
-            <Text style = { styles.property } > Password: </Text>  
+            <
+            Text style = { styles.property } > Password: < /Text>  
 
-            <TextInput value = { this.state.password }
+            <
+            TextInput value = { this.state.password }
             style = { styles.input }
             onChangeText = { this.onChangePass }
             />  
 
-<<<<<<< HEAD
 
             <
             Separator style = { styles.expandible }
@@ -135,9 +120,7 @@ class Login extends Component {
             Button title = "ENTER"
             color = "#728e75"
             onPress = {
-                () =>
-
-                this.props.navigation.navigate('HomeNut', { currentUser: this.state.email })
+                () => this.searchInDB()
             }
             />
 
@@ -153,23 +136,11 @@ class Login extends Component {
             <
             Button title = "REGISTER"
             color = "#aa6d71"
-=======
-            <Button title = "ENTER"
-            color = "#659e6e"
-            onPress = {
-                () => this.searchInDB()
-            }
-            />
-
-            <Button title = "REGISTER"
-            color = "#92d1b9"
->>>>>>> 679b5fd44388b8651269dacc35b7e321b23fd2c0
             onPress = {
                 () => this.props.navigation.navigate('RegisterScreen', )
             }
             />
 
-<<<<<<< HEAD
             <
             /View>
 
@@ -179,9 +150,6 @@ class Login extends Component {
             <
             /ImageBackground>
 
-=======
-            </View >
->>>>>>> 679b5fd44388b8651269dacc35b7e321b23fd2c0
         );
 
     }
