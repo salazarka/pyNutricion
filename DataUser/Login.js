@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TextInput, Button, Alert } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Button, Alert, ImageBackground, ScrollView } from 'react-native';
+import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
+import axios from 'axios';
+import { ListItem, Separator } from 'native-base';
 import { StackNavigator } from 'react-navigation';
-
 const firebaseApp = require('../firebaseconfig.js');
 var stateAlert = true;
 
 class Login extends Component {
-    _renderSection = (section, sectionId)  => <Text>{section}</Text>;
-  
+    _renderSection = (section, sectionId) => < Text > { section } < /Text>;
+
+
     constructor(props) {
         super(props);
         this.state = {
             email: "", //THIS IS A DEFAULT TEXT IN THE INPUT SPACE
             password: ""
-        }       
+        }
     }
 
-    searchInDB () {
-        itemsRef =  this.getRef().child('items'); 
-        itemsRef.on('value',(snap) => {
+    searchInDB() {
+        itemsRef = this.getRef().child('items');
+        itemsRef.on('value', (snap) => {
             let items = [];
             snap.forEach((child) => {
                 if( (child.val().email == this.state.email) && (child.val().password == this.state.password) ){
@@ -54,15 +57,15 @@ class Login extends Component {
         });
         
     }
-    
-    getRef(){
+
+    getRef() {
         return firebaseApp.database().ref();
     }
 
-        //UPDATES THE USERNAME INPUT
+    //UPDATES THE USERNAME INPUT
     onChangeInput = (result) => {
-        this.setState({ email: result });
-    }
+            this.setState({ email: result });
+        }
         //UPDATES THE PASSWORD INPUT
     onChangePass = (result) => {
         this.setState({ password: result });
@@ -70,41 +73,87 @@ class Login extends Component {
 
 
     render() {
-        return ( <View>
+        return (
 
-            <Text style = { styles.title } > NUTRITION CONTROL APP </Text> 
+            <
+            ImageBackground source = { require('../assets/nutbg.jpg') }
+            style = { styles.container } >
 
-            <Text style = { styles.title } > LOGIN </Text>  
+            <
+            ScrollView style = {
+                { width: '100%' }
+            } >
 
-            <Text style = { styles.property } > Email: </Text>     
+            <
+            View >
 
-            <TextInput value = { this.state.email }
+            <
+            Text style = { styles.title } > NUTRITION CONTROL APP < /Text> 
+
+            <
+            Text style = { styles.title } > LOGIN < /Text>  
+
+            <
+            Text style = { styles.property } > Email: < /Text>     
+
+            <
+            TextInput value = { this.state.email }
             style = { styles.input }
             onChangeText = { this.onChangeInput }
             />  
 
-            <Text style = { styles.property } > Password: </Text>  
+            <
+            Text style = { styles.property } > Password: < /Text>  
 
-            <TextInput value = { this.state.password }
+            <
+            TextInput value = { this.state.password }
             style = { styles.input }
             onChangeText = { this.onChangePass }
             />  
 
-            <Button title = "ENTER"
-            color = "#659e6e"
+
+            <
+            Separator style = { styles.expandible }
+            bordered >
+
+            <
+            /Separator >
+
+
+            <
+            Button title = "ENTER"
+            color = "#728e75"
             onPress = {
                 () => this.searchInDB()
             }
             />
 
-            <Button title = "REGISTER"
-            color = "#92d1b9"
+
+            <
+            Separator style = { styles.expandible }
+            bordered >
+
+            <
+            /Separator >
+
+
+            <
+            Button title = "REGISTER"
+            color = "#aa6d71"
             onPress = {
                 () => this.props.navigation.navigate('RegisterScreen', )
             }
             />
 
-            </View >
+            <
+            /View>
+
+            <
+            /ScrollView> 
+
+            <
+            /ImageBackground>
+
         );
 
     }
@@ -117,9 +166,10 @@ const styles = StyleSheet.create({
     },
     title: {
         marginTop: 30,
-        color: '#26754f',
+        color: 'white',
         fontSize: 25,
         textAlign: 'center',
+
     },
     property: {
         color: '#252f60',
@@ -127,10 +177,17 @@ const styles = StyleSheet.create({
     },
     input: {
         width: '100%',
-        backgroundColor: 'lightgrey',
+        backgroundColor: 'transparent',
         marginTop: 20,
         fontSize: 20,
         padding: 5
+    },
+    expandible: {
+        backgroundColor: 'transparent',
+        marginTop: 3,
+    },
+    container: {
+        flex: 1,
     }
 });
 
